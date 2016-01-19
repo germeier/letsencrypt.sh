@@ -59,3 +59,12 @@
 
 # E-mail to use during the registration (default: <unset>)
 #CONTACT_EMAIL=
+
+# File to log messages to
+#LOGFILE=
+
+# Which log messages should be written to the logfile
+#LOGLEVEL=3
+
+# Which log messages should be written to the console
+#MSGLEVEL=3

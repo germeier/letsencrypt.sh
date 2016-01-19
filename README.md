@@ -36,6 +36,8 @@ Parameters:
  --config (-f) path/to/config.sh  Use specified config file
  --hook (-k) path/to/hook.sh      Use specified script for hooks
  --challenge (-t) http-01|dns-01  Which challenge should be used? Currently http-01 and dns-01 are supported
+ --quiet (-q)                     Set message level -1 (may be used multiple times)
+ --verbose (-v)                   Set message level +1 (may be used multiple times)
 ```
 
 ### domains.txt

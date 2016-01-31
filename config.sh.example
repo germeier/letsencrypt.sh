@@ -68,3 +68,6 @@
 
 # Which log messages should be written to the console
 #MSGLEVEL=3
+
+# If set: change MSGLEVEL retroactively to MSGLEVELHIGH if MSGLEVEL was reached
+#MSGLEVELHIGH=

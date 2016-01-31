@@ -59,6 +59,8 @@ load_config() {
   LOGFILE=
   LOGLEVEL=3
   MSGLEVEL=3
+  MSGLEVELHIGH=
+  MSGLOGFILE="$(mktemp -t XXXXXX)"
   LOCKFILE="${BASEDIR}/lock"
 
   if [[ -z "${CONFIG:-}" ]]; then
@@ -158,6 +160,7 @@ init_system() {
 
 shutdown_system() {
   _info "Stopping letsencrypt.sh on $(date)"
+  rm -f "${MSGLOGFILE}"
 }
 
 # handle messages
@@ -181,6 +184,16 @@ _msg() {
   # write to logfile if specified and matching log level
   if [[ -n "${LOGFILE}" ]] && [[ ${LEVEL} -le ${LOGLEVEL} ]]; then
     echo "$@" >> "${LOGFILE}"
+  fi
+
+  if [[ -n "${MSGLEVELHIGH}" ]] && [[ ${LEVEL} -le ${MSGLEVELHIGH} ]]; then
+    if [[ ${LEVEL} -le ${MSGLEVEL} ]]; then
+      cat "${MSGLOGFILE}"
+      MSGLEVELHIGH=
+      MSGLEVEL=${MSGLEVELHIGH}
+    else
+      echo "$@" >> "${MSGLOGFILE}"
+    fi
   fi
 
   # print message with matching message level

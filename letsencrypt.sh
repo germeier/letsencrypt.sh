@@ -189,8 +189,8 @@ _msg() {
   if [[ -n "${MSGLEVELHIGH}" ]] && [[ ${LEVEL} -le ${MSGLEVELHIGH} ]]; then
     if [[ ${LEVEL} -le ${MSGLEVEL} ]]; then
       cat "${MSGLOGFILE}"
-      MSGLEVELHIGH=
       MSGLEVEL=${MSGLEVELHIGH}
+      MSGLEVELHIGH=
     else
       echo "$@" >> "${MSGLOGFILE}"
     fi
